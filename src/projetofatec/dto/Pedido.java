@@ -17,6 +17,7 @@ public class Pedido {
     private double valor_total;
     private Cliente  cliente;
     private Produto  produto;
+    
 
     public Cliente getCliente() {
         return cliente;
@@ -92,16 +93,14 @@ public class Pedido {
         this.id_produto=id_produto;
     }
 
-    // para impressao
-
-    /**
-     *
-     * @return
-     */
     @Override
     public String toString() {
-        return "Pedido{" + "\nid=" + id_pedido + ",  \nid_cliente=" + id_cliente + "\nid_produto="+ id_produto + "\nvalor=" + valor_total + '}';
+        return "Pedido{" + "id_pedido=" + id_pedido + ", id_cliente=" + id_cliente + ", id_produto=" + id_produto + ", valor_total=" + valor_total + '}';
     }
+
+    
+
+    
     
     
     

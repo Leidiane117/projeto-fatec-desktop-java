@@ -82,8 +82,9 @@ public class ManterPedido {
         List <Pedido> listaPedido = pedidoCliente.listar(pedidoE);
         listaPedido.forEach(pedidoS -> {
             JOptionPane.showMessageDialog(null, pedidoS.toString());
-            //JOptionPane.showMessageDialog(null, pedidoS.getCliente().toString());
-            //JOptionPane.showMessageDialog(null, pedidoS.getProduto().toString());
+            JOptionPane.showMessageDialog(null, pedidoS.getCliente().toString());
+            JOptionPane.showMessageDialog(null, pedidoS.getProduto().toString());         
+          
             });
     }
     

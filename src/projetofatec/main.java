@@ -23,7 +23,9 @@ public class main {
         String senha = JOptionPane.showInputDialog("SENHA");
        if (!"admin".equals(usuario)  ||  !"123".equals(senha))
      {         
-        JOptionPane.showMessageDialog(null,"Senha ou usuário inválidos!");
+       JOptionPane.showMessageDialog(null, "Senha ou usuário inválidos!","Atenção:", JOptionPane.ERROR_MESSAGE);
+        
+     
      }
        else{
             try {
@@ -42,8 +44,9 @@ public class main {
         int num = Integer.parseInt(JOptionPane.showInputDialog(msg));
         switch (num) {
             case 0:
-                int sair = JOptionPane.showConfirmDialog(null,"Deseja Sair?");
+                int sair = JOptionPane.showConfirmDialog(null,"Deseja Sair?","Sair...",JOptionPane.YES_NO_OPTION);
                 if (sair > 0) menu();
+           
                 break;
             case 1:
                 ManterCliente.menu();
@@ -58,7 +61,6 @@ public class main {
                 System.out.println("Opção inválida");
         }
     }
-    
     
 }
 
