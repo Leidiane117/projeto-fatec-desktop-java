@@ -106,10 +106,10 @@ public class ClienteDAO {
    public List<Cliente> listar(Cliente clienteEntrada) throws SQLException{
         // usus: array armazena a lista de registros
         List<Cliente> pess = new ArrayList<>();
-        String sql = "select * from cliente";
-        // seta os valores
+        String sql = "select * from cliente where nome like ?";
+     
         try (PreparedStatement stmt = this.c.prepareStatement(sql)) {
-                     
+          stmt.setString(1,"%" + clienteEntrada.getNome() + "%");           
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     // criando o objeto Usuario

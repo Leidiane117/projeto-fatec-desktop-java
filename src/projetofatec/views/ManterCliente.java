@@ -16,7 +16,7 @@ import projetofatec.dto.Cliente;
  */
 public class ManterCliente {
      public static void menu() throws SQLException, ClassNotFoundException {
-        String msg = " 1 - Inserir \n 2 - Alterar \n 3 - buscar \n 4 - excluir \n 5 - Listar " ;
+        String msg = " 1 - Inserir \n 2 - Alterar \n 3 - Buscar \n 4 - Excluir \n 5 - Listar " ;
         int num = Integer.parseInt(JOptionPane.showInputDialog(msg));
         switch (num) {
             case 1:
@@ -75,11 +75,12 @@ public class ManterCliente {
         JOptionPane.showMessageDialog(null,"excluído com sucesso! "+"\n "+cliente.toString());
     }
     public static void listar() throws SQLException, ClassNotFoundException {
-        Cliente cliente = new Cliente();
-        ClienteController clienteC =new ClienteController();
-        List<Cliente> listaCli = clienteC.listar(cliente);
-        for (Cliente cliSaida : listaCli) {
-            JOptionPane.showMessageDialog(null,cliSaida.toString());
+        String nome = JOptionPane.showInputDialog("NOME");
+        Cliente pes = new Cliente(nome);
+        ClienteController contpes = new ClienteController();
+        List<Cliente> listaPes = contpes.listar(pes);
+        for (Cliente pesSaida : listaPes) {
+            JOptionPane.showMessageDialog(null,pesSaida.toString());
         }
     }
     

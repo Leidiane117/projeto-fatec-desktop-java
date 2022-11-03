@@ -22,7 +22,13 @@ public class Cliente {
         this.id = id;
     }
     
+    public Cliente(String nome) {
+        this.nome = nome;
+       
+    }
+    
     public Cliente() {
+        
        
     }
     // para inserir pessoa

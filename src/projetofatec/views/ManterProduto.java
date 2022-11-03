@@ -16,7 +16,7 @@ import projetofatec.dto.Produto;
  */
 public class ManterProduto {
          public static void menu() throws SQLException, ClassNotFoundException {
-        String msg = " 1 - Inserir \n 2 - Alterar \n 3 - buscar \n 4 - excluir \n 5 - Listar " ;
+        String msg = " 1 - Inserir \n 2 - Alterar \n 3 - Buscar \n 4 - Excluir \n 5 - Listar " ;
         int num = Integer.parseInt(JOptionPane.showInputDialog(msg));
         switch (num) {
             case 1:
@@ -69,14 +69,15 @@ public class ManterProduto {
     }
     public static void excluir() throws SQLException, ClassNotFoundException {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        Produto  produtoE=new Produto();
+        Produto  produtoE=new Produto(id);
         ProdutoController produtoC=new ProdutoController();
         Produto produtoS= produtoC.excluir(produtoE);
         JOptionPane.showMessageDialog(null,produtoS.toString());
         
     }
     public static void listar() throws SQLException, ClassNotFoundException {
-        Produto produto = new Produto();
+        String nome = JOptionPane.showInputDialog("NOME");
+        Produto produto = new Produto(nome);
         ProdutoController produtoC=new ProdutoController();
         List<Produto> listaProduto = produtoC.listar(produto);
         for (Produto produtoSaida : listaProduto) {

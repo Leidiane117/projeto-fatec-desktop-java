@@ -88,14 +88,12 @@ public class ProdutoDAO {
 }
     public Produto alterar(Produto produtoE) throws SQLException{
         String sql = "UPDATE produto SET nome = ?, preco = ?, descricao = ? WHERE id = ?";
-        // seta os valores
-        try ( // prepared statement para inserção
-                PreparedStatement stmt = c.prepareStatement(sql)) {
+       
+        try ( PreparedStatement stmt = c.prepareStatement(sql)) {
             // seta os valores
             stmt.setString(1,produtoE.getNome());
             stmt.setDouble(2,produtoE.getPreco());
             stmt.setString(3,produtoE.getDescricao());
-                      
             stmt.setInt(4,produtoE.getId());
             
             // executa
@@ -108,10 +106,10 @@ public class ProdutoDAO {
    public List<Produto> listar(Produto produtoEntrada) throws SQLException{
         // usus: array armazena a lista de registros
         List<Produto> produtoL = new ArrayList<>();
-        String sql = "select * from produto";
+         String sql = "select * from produto where nome like ?";
         // seta os valores
         try (PreparedStatement stmt = this.c.prepareStatement(sql)) {
-                     
+           stmt.setString(1,"%" + produtoEntrada.getNome() + "%");            
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     // criando o objeto

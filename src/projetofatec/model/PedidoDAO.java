@@ -94,8 +94,7 @@ public class PedidoDAO {
 }
     public Pedido alterar(Pedido pedidoE) throws SQLException{
         String sql = "UPDATE pedido SET id_cliente = ? , id_produto=?, valor=? WHERE id = ?";
-        try ( // prepared statement para inserção
-                PreparedStatement stmt = c.prepareStatement(sql)) {
+        try (PreparedStatement stmt = c.prepareStatement(sql)) {
             // seta os valores      
             stmt.setInt(1,pedidoE.getId_Cliente());
             stmt.setInt(2,pedidoE.getId_Produto());
@@ -113,27 +112,26 @@ public class PedidoDAO {
    public List<Pedido> listar(Pedido pedidoEntrada) throws SQLException{
         // usus: array armazena a lista de registros
         List<Pedido> pedidos=new ArrayList<>();
-        String sql = "select * from pedido";
-        // seta os valores
-        PreparedStatement stmt = this.c.prepareStatement(sql);
-        ResultSet rs = stmt.executeQuery();
+        String sql = "select * from pedido where id like ?";
+        try (PreparedStatement stmt = this.c.prepareStatement(sql)) {
+            stmt.setString(1,"%" + pedidoEntrada.getId()+ "%");
+            try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-                    // criando 
+                    // criando
                     Pedido pedido;
                     pedido = new Pedido(
                             rs.getInt(1),
                             rs.getInt(2),
                             rs.getInt(3),
                             rs.getDouble(4));
-                            
-                            
-                   
+                    
+                    
+                    
                     // adiciona o usu à lista de usus
-                    pedidos.add(pedido); 
+                    pedidos.add(pedido);
                 }
-                
-                rs.close();
-                stmt.close();
+            }
+        }
                 return pedidos;
             }
        

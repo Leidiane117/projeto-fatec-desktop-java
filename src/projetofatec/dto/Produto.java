@@ -28,9 +28,23 @@ public class Produto {
         this.descricao = descricao;
     }
     //listar
-    public Produto() {
+    public Produto(String nome)
+    {
+        this.nome= nome;
+        
     }
-
+    public Produto(int id)
+    {
+        this.id= id;
+        
+    }
+    //listar tudo
+    public Produto()
+    {
+        
+        
+    }
+    
     public int getId() {
         return id;
     }
@@ -55,6 +69,10 @@ public class Produto {
         this.preco = preco;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescricao() {
         return descricao;
     }
@@ -62,10 +80,7 @@ public class Produto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-   //delete
-    public Produto(int id) {
-        this.id = id;
-    }
+ 
 
     @Override
     public String toString() {

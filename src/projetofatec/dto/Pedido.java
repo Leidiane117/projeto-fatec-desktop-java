@@ -98,12 +98,7 @@ public class Pedido {
         return "Pedido{" + "id_pedido=" + id_pedido + ", id_cliente=" + id_cliente + ", id_produto=" + id_produto + ", valor_total=" + valor_total + '}';
     }
 
-    
-
-    
-    
-    
-    
+     
     
 }
 
